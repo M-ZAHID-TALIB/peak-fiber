@@ -1,23 +1,36 @@
-# Peak Fiber
+# Peak Fiber 🚀
 
-A small ISP management dashboard and API used for development and demos. This repository contains a FastAPI backend and a React + Vite frontend.
+**Peak Fiber** is a lightweight ISP management dashboard and API used for development, demos, and early-stage testing. It includes a FastAPI backend and a React + Vite frontend with example seed data and helpful developer tools.
+
+---
+
+## 🔍 Highlights
+
+- FastAPI backend (REST endpoints & DB seeding)
+- React + Vite frontend (component-based UI)
+- Seeded demo data for staff, inventory, connections, expenses, and more
+- Simple single-file SQLite DB for local development
 
 ---
 
 ## Quick start ⚡
 
+> These steps assume you are on Windows (PowerShell); adjust commands for macOS/Linux.
+
 ### Backend (FastAPI)
 
-1. Create a Python virtual environment and activate it:
+1. Create & activate a virtual environment:
 
    ```powershell
    python -m venv .venv
    .\.venv\Scripts\Activate.ps1
    ```
 
-2. Install dependencies (if you have a `requirements.txt`, use that; otherwise install the essentials):
+2. Install Python dependencies (or use your `requirements.txt`):
 
    ```powershell
+   pip install -r backend/requirements.txt
+   # or
    pip install fastapi uvicorn sqlalchemy passlib
    ```
 
@@ -27,15 +40,15 @@ A small ISP management dashboard and API used for development and demos. This re
    uvicorn backend.main:app --reload --port 8000
    ```
 
-4. Verify:
-   - API root: http://localhost:8000
+4. Useful local endpoints:
+   - API root: http://localhost:8000/
    - Reset & seed DB: http://localhost:8000/api/reset-db
 
 ---
 
 ### Frontend (React + Vite)
 
-1. Change into the frontend folder and install:
+1. Install and start the dev server:
 
    ```powershell
    cd frontend
@@ -43,38 +56,62 @@ A small ISP management dashboard and API used for development and demos. This re
    npm run dev
    ```
 
-2. Open the dev URL displayed by Vite (usually http://localhost:5173).
+2. Open the URL shown by Vite (usually http://localhost:5173).
 
 ---
 
-## Consolidated Documentation
+## Configuration & Environment
 
-The following documentation files were consolidated into this README and removed from the repository to avoid duplication:
-
-- `DATA_SEEDING_PART_2.md` (data seeding for deposits, promises, complaints, SMS bots)
-- `DATA_SEEDING_UPDATE.md` (seeding for expenses and action queue)
-- `INVENTORY_UPDATE.md` (detailed inventory seeding, API changes, UI notes)
-- `STAFF_UPDATE.md` (staff seeding and profile pictures)
-- `frontend/README.md` (Vite template notes)
-
-If you need any of the original files restored, they are available in the Git history (if this is a Git repository).
+- Database: `peakfiber.db` (SQLite) by default. Change DB settings in `backend/database.py` if needed.
+- Secrets: add any production secrets or API keys using environment variables (recommended) instead of committing them.
 
 ---
 
-## Useful endpoints
+## Key files & structure 🔧
 
-- GET / -> health check
-- GET /api/dashboard/summary -> quick metrics
-- GET /api/reset-db -> reset and re-seed the database (development use)
-- See `backend/main.py` for a full list of available endpoints.
-
----
-
-## Notes
-
-- This repository is intended for development and demo purposes. Use with caution in production.
-- For environment-specific setup (databases, secrets) add documentation or env files as needed.
+- `backend/` — FastAPI app, models, seeds, and DB helpers
+- `frontend/` — React + Vite app and UI components
+- `README.md` — This file
 
 ---
 
-Enjoy! ✅
+## Common commands
+
+- Start backend: `uvicorn backend.main:app --reload --port 8000`
+- Start frontend: `cd frontend && npm run dev`
+- Reset DB and re-seed (dev): `GET /api/reset-db`
+
+---
+
+## API (examples)
+
+- GET `/api/dashboard/summary` — basic metrics
+- GET `/api/staff` — list staff
+- POST `/api/staff` — create staff
+- GET `/api/inventory/{category}` — inventory by category
+
+(See `backend/main.py` for the full list of endpoints.)
+
+---
+
+## Contributing 🤝
+
+- Please open issues or pull requests for fixes and improvements.
+- Add tests where possible and keep changes small and focused.
+- Consider adding a `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md` for larger contributions.
+
+---
+
+## License
+
+Add a `LICENSE` file to the repository root (e.g., `MIT`, `Apache-2.0`, or `GPL-3.0`). Once you pick a license I can add it and update this README with a license badge.
+
+---
+
+## Contact
+
+For questions or help, open an issue or reach out to the project maintainer.
+
+---
+
+Thank you for using Peak Fiber — enjoy! ✅
