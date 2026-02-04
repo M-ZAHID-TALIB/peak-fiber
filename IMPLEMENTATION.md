@@ -264,10 +264,4 @@ Inventory tie-in (hardware deployment):
 
 ---
 
-If you'd like, I can:
 
-- Generate a concise sequence diagram (text or Mermaid) for a specific scenario, or
-- Create a walk-through file for new contributors (PR checklist & dev setup), or
-- Add in-code comments mapping UI elements to backend endpoints and model fields.
-
-Tell me which you'd prefer and I'll add it. ✅
